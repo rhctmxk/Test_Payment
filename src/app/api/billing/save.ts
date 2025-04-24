@@ -2,6 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
+/**
+ * @desc: 서버 측 billing key 저장 로직(예시)
+ * */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { imp_uid, customer_uid } = req.body
 

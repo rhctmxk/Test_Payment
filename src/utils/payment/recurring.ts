@@ -1,6 +1,10 @@
 // utils/payment/recurring.ts
 import axios from 'axios'
 
+
+/**
+ * @desc: 추후 정기결제 실행(예: 매월 1일 자동 실행)
+ * */
 export async function requestRecurringPayment(customer_uid: string, amount: number, name: string) {
     const tokenRes = await axios.post('https://api.iamport.kr/users/getToken', {
         imp_key: process.env.IMP_KEY,
