@@ -30,8 +30,8 @@ export default function PaymentButton({ amount, buyerEmail, buyerName }: Payment
 
         IMP.request_pay(
             {
-                pg: 'kakaopay', // or kakaopay, tosspay 등
-                pay_method: 'card', // 'card', 'vbank', 'phone' 등
+                pg: 'html5_inicis', // or kakaopay, tosspay 등
+                // pay_method: 'phone', // 'card', 'vbank', 'phone' 등
                 merchant_uid: `mid_${new Date().getTime()}`, // 주문 고유번호
                 name: '상품명 예시',
                 amount: amount,

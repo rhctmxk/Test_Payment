@@ -24,11 +24,11 @@ export default function PaymentPage() {
     const [open, setOpen] = useState(false)
     const [cart, setCart] = useState<CartItem[]>([])
     const [userInfo, setUserInfo] = useState({
-        name: '',
-        email: '',
-        tel: '',
-        addr: '',
-        postcode: '',
+        name: '이지현',
+        email: 'jhlee@gmail.com',
+        tel: '010-1234-5678',
+        addr: '주소1',
+        postcode: '12345',
     })
 
     useEffect(() => {
@@ -72,8 +72,8 @@ export default function PaymentPage() {
         IMP.init('imp31675063')
 
         IMP.request_pay({
-            pg: 'kakaopay',
-            pay_method: 'card',
+            pg: 'nice', // nice, html5_inicis
+            // pay_method: 'card',
             merchant_uid: `order_${new Date().getTime()}`,
             name: `${productNames} 외 ${cart.length}건`,
             amount: totalAmount,
@@ -82,7 +82,7 @@ export default function PaymentPage() {
             buyer_tel: userInfo.tel,
             buyer_addr: userInfo.addr,
             buyer_postcode: userInfo.postcode,
-            customer_uid: `user_${userInfo.tel}`,
+            // customer_uid: `user_${userInfo.tel}`,
         }, (rsp: any) => {
             if (rsp.success) {
                 alert('결제 성공!')
@@ -105,8 +105,8 @@ export default function PaymentPage() {
                         onClick={() => toggleCart(p)}
                         className={`relative flex flex-col items-center p-4 border rounded-2xl shadow-md transition-all duration-300 cursor-pointer hover:shadow-lg hover:-translate-y-1 ${cart.find(item => item.id === p.id) ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-200'}`}
                     >
-                        <Image src={p.image!} alt={p.name} width={200} height={200}
-                               className="object-cover rounded-md mb-4" unoptimized/>
+                        <Image src={p.image!} alt={p.name} fill={false} width={300} height={200}
+                               className="w-full h-[200px] object-cover rounded-md mb-4" unoptimized/>
                         <strong className="text-lg font-semibold text-center">{p.name}</strong>
                         <div className="text-sm text-gray-500 text-center">{p.description}</div>
                         <p className="pt-3 text-lg font-bold text-blue-600">{p.price.toLocaleString()}원</p>
